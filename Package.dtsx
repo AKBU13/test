@@ -11,8 +11,8 @@
   DTS:LocaleID="1036"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{0D153F55-874C-4F7E-8D13-D13A67348B45}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{A4C5D741-D6C6-4C2E-9FBB-729B58F9A226}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ulric\Desktop\BI\Test_DW\z_test_file\GRH_Employe_Commercial.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ulric\Desktop\BI\Test_DW\z_test_file\GRH_Employe_Commercial.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -63,6 +63,12 @@
                       cachedLength="255"
                       cachedName="Prenom"
                       lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Prenom]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Colonne dérivée.Inputs[Entrée de colonne dérivée].Columns[Nom]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Nom"
+                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Nom]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -96,6 +102,29 @@
                           description="Expression claire de colonne dérivée"
                           expressionType="Notify"
                           name="FriendlyExpression">UPPER(Prenom)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 2]"
+                      name="Derived Column 2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[UPPER](#{Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Nom]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(Nom)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -528,13 +557,13 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\Tâche de flux de données\Source Excel"
-          TopLeft="224.999996647239,42.9999993592501" />
-        <NodeLayout
           Size="159.2,41.6"
           Id="Package\Tâche de flux de données\Destination Excel"
           TopLeft="534.999992027879,202.999996975064" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Tâche de flux de données\Source Excel"
+          TopLeft="224.999996647239,42.9999993592501" />
         <NodeLayout
           Size="154.4,41.6"
           Id="Package\Tâche de flux de données\Colonne dérivée"
@@ -611,7 +640,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tâche de flux de données\Source Excel">
+    design-time-name="Package\Tâche de flux de données\Destination Excel">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -624,7 +653,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tâche de flux de données\Destination Excel">
+    design-time-name="Package\Tâche de flux de données\Source Excel">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
