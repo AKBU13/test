@@ -11,8 +11,8 @@
   DTS:LocaleID="1036"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{A4C5D741-D6C6-4C2E-9FBB-729B58F9A226}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{6B45D41E-F645-4231-B872-CB2B7CA73230}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,30 @@
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
           DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ulric\Desktop\BI\Test_DW\z_test_file\GRH_Employe_Commercial.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Gestionnaire de connexions Excel 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{7296531D-3D32-4111-BE3F-C8C1E5275D1F}"
+      DTS:ObjectName="Gestionnaire de connexions Excel 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ulric\Desktop\BI\Test_DW\z_test_file\GRH_Employe_RH.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Gestionnaire de connexions Excel 2]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{2B521A23-3978-4F1B-909B-5A5F2AF1F6CD}"
+      DTS:ObjectName="Gestionnaire de connexions Excel 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Ulric\Desktop\BI\Test_DW\z_test_file\GRH_Employe_Informatique.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -69,6 +93,12 @@
                       cachedLength="255"
                       cachedName="Nom"
                       lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Nom]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Colonne dérivée.Inputs[Entrée de colonne dérivée].Columns[Departement]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Departement"
+                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Departement]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -125,6 +155,29 @@
                           description="Expression claire de colonne dérivée"
                           expressionType="Notify"
                           name="FriendlyExpression">UPPER(Nom)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 3]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 3]"
+                      name="Derived Column 3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[UPPER](#{Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Departement]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(Departement)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -223,40 +276,40 @@
                       cachedDataType="r8"
                       cachedName="ID"
                       externalMetadataColumnId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].ExternalColumns[ID]"
-                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[ID]" />
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[ID]" />
                     <inputColumn
                       refId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].Columns[Nom]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Nom"
                       externalMetadataColumnId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].ExternalColumns[Nom]"
-                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Nom]" />
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Nom]" />
                     <inputColumn
                       refId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].Columns[Prenom]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Prenom"
                       externalMetadataColumnId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].ExternalColumns[Prenom]"
-                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Prenom]" />
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Prenom]" />
                     <inputColumn
                       refId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].Columns[Salaire]"
                       cachedDataType="r8"
                       cachedName="Salaire"
                       externalMetadataColumnId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].ExternalColumns[Salaire]"
-                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Salaire]" />
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Salaire]" />
                     <inputColumn
                       refId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].Columns[Dte_Embauche]"
                       cachedDataType="date"
                       cachedName="Dte_Embauche"
                       externalMetadataColumnId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].ExternalColumns[Dte_Embauche]"
-                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Dte_Embauche]" />
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Dte_Embauche]" />
                     <inputColumn
                       refId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].Columns[Departement]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Departement"
                       externalMetadataColumnId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel].ExternalColumns[Departement]"
-                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Departement]" />
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Departement]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -313,6 +366,352 @@
                       lineageId="Package\Tâche de flux de données\Destination Excel.Outputs[Sortie d'erreur de destination Excel].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\Jointure de fusion"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Jointure de fusion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Combine deux flux de données triés en un seul à l'aide de la jointure FULL, LEFT ou INNER. Nous recommandons cette transformation lorsque les flux de données peuvent être triés au niveau de leurs sources."
+              name="Jointure de fusion"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de jointure à effectuer."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le nombre de colonnes dans la clé de tri."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs NULL sont traitées comme valeurs égales."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indique le nombre maximal de mémoires tampons demandées par entrée avant blocage."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion]"
+                  hasSideEffects="true"
+                  name="Entrée gauche de jointure de fusion">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[ID]"
+                      cachedDataType="r8"
+                      cachedName="ID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Nom]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Nom"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Nom]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Prenom]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Prenom"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Prenom]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Salaire]"
+                      cachedDataType="r8"
+                      cachedName="Salaire"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Salaire]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Dte_Embauche]"
+                      cachedDataType="date"
+                      cachedName="Dte_Embauche"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Dte_Embauche]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Departement]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Departement"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Departement]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion]"
+                  hasSideEffects="true"
+                  name="Entrée droite de jointure de fusion">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[ID]"
+                      cachedDataType="r8"
+                      cachedName="ID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Nom]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Nom"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Nom]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Prenom]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Prenom"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Prenom]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Salaire]"
+                      cachedDataType="r8"
+                      cachedName="Salaire"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Salaire]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Dte_Embauche]"
+                      cachedDataType="date"
+                      cachedName="Dte_Embauche"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Dte_Embauche]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Departement]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Departement"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Departement]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Derived Column 1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Derived Column 1"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Derived Column 1]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Derived Column 2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Derived Column 2"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Derived Column 2]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Derived Column 3]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Derived Column 3"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Derived Column 3]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion]"
+                  isSorted="true"
+                  name="Sortie de jointure de fusion">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[ID]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[ID]"
+                      name="ID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Nom]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Nom]"
+                      name="Nom">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Nom]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Prenom]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Prenom]"
+                      name="Prenom">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Prenom]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Salaire]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Salaire]"
+                      name="Salaire">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Salaire]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Dte_Embauche]"
+                      dataType="date"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Dte_Embauche]"
+                      name="Dte_Embauche">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Dte_Embauche]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Departement]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Departement]"
+                      name="Departement">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Departement]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Derived Column 1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Derived Column 1]"
+                      name="Derived Column 1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Derived Column 1]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Derived Column 2]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Derived Column 2]"
+                      name="Derived Column 2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Derived Column 2]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Derived Column 3]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Derived Column 3]"
+                      name="Derived Column 3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[Derived Column 3]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[ID (1)]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[ID (1)]"
+                      name="ID (1)"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Nom (1)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Nom (1)]"
+                      name="Nom (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Nom]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Prenom (1)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Prenom (1)]"
+                      name="Prenom (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Prenom]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Salaire (1)]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Salaire (1)]"
+                      name="Salaire (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Salaire]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Dte_Embauche (1)]"
+                      dataType="date"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Dte_Embauche (1)]"
+                      name="Dte_Embauche (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Dte_Embauche]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Departement (1)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Departement (1)]"
+                      name="Departement (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Departement]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -515,18 +914,766 @@
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Tâche de flux de données\Source Excel 1"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Source Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Source Excel"
+              name="Source Excel 1"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">GRH_Employe_Informatique$</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappage des paramètres de la commande SQL en variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tâche de flux de données\Source Excel 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Gestionnaire de connexions Excel 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[Gestionnaire de connexions Excel 2]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel]"
+                  name="Sortie de source Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[ID]"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Nom]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[Nom]"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Nom]"
+                      name="Nom"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Prenom]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[Prenom]"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Prenom]"
+                      name="Prenom"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Salaire]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[Salaire]"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Salaire]"
+                      name="Salaire"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Dte_Embauche]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[Dte_Embauche]"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Dte_Embauche]"
+                      name="Dte_Embauche"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Departement]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[Departement]"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Departement]"
+                      name="Departement"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[ID]"
+                      dataType="r8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[Nom]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nom" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[Prenom]"
+                      dataType="wstr"
+                      length="255"
+                      name="Prenom" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[Salaire]"
+                      dataType="r8"
+                      name="Salaire" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[Dte_Embauche]"
+                      dataType="date"
+                      name="Dte_Embauche" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].ExternalColumns[Departement]"
+                      dataType="wstr"
+                      length="255"
+                      name="Departement" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[ID]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[Nom]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[Nom]"
+                      name="Nom" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[Prenom]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[Prenom]"
+                      name="Prenom" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[Salaire]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[Salaire]"
+                      name="Salaire" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[Dte_Embauche]"
+                      dataType="date"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[Dte_Embauche]"
+                      name="Dte_Embauche" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[Departement]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[Departement]"
+                      name="Departement" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie d'erreur de source Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\Trier 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Trier;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Trie les données d'entrée en ordre croissant ou décroissant lorsque le tri ne peut pas être effectué à la source. Par exemple, triez les données de vente par 'id de client' avant leur enregistrement dans un fichier plat et leur diffusion dans un autre service. Remarque : nous ne recommandons pas cette transformation dans le cas de flux de données volumineux."
+              name="Trier 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si la transformation de tri supprime les lignes comportant des valeurs de tri en double."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le nombre maximal de threads à utiliser pour le tri."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri]"
+                  name="Entrée de tri">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[ID]"
+                      cachedDataType="r8"
+                      cachedName="ID"
+                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[Nom]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Nom"
+                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Nom]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[Prenom]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Prenom"
+                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Prenom]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[Salaire]"
+                      cachedDataType="r8"
+                      cachedName="Salaire"
+                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Salaire]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[Dte_Embauche]"
+                      cachedDataType="date"
+                      cachedName="Dte_Embauche"
+                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Dte_Embauche]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[Departement]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Departement"
+                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Departement]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[Derived Column 1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Derived Column 1"
+                      lineageId="Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 1]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[Derived Column 2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Derived Column 2"
+                      lineageId="Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 2]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[Derived Column 3]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Derived Column 3"
+                      lineageId="Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 3]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri]"
+                  isSorted="true"
+                  name="Sortie de tri">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[ID]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[ID]"
+                      name="ID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Nom]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Nom]"
+                      name="Nom">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Nom]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Prenom]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Prenom]"
+                      name="Prenom">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Prenom]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Salaire]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Salaire]"
+                      name="Salaire">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Salaire]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Dte_Embauche]"
+                      dataType="date"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Dte_Embauche]"
+                      name="Dte_Embauche">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Dte_Embauche]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Departement]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Departement]"
+                      name="Departement">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Departement]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Derived Column 1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Derived Column 1]"
+                      name="Derived Column 1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 1]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Derived Column 2]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Derived Column 2]"
+                      name="Derived Column 2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 2]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Derived Column 3]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[Derived Column 3]"
+                      name="Derived Column 3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 3]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\Trier 2"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Trier;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Trie les données d'entrée en ordre croissant ou décroissant lorsque le tri ne peut pas être effectué à la source. Par exemple, triez les données de vente par 'id de client' avant leur enregistrement dans un fichier plat et leur diffusion dans un autre service. Remarque : nous ne recommandons pas cette transformation dans le cas de flux de données volumineux."
+              name="Trier 2"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si la transformation de tri supprime les lignes comportant des valeurs de tri en double."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le nombre maximal de threads à utiliser pour le tri."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\Trier 2.Inputs[Entrée de tri]"
+                  name="Entrée de tri">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Inputs[Entrée de tri].Columns[ID]"
+                      cachedDataType="r8"
+                      cachedName="ID"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Inputs[Entrée de tri].Columns[Nom]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Nom"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Nom]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Inputs[Entrée de tri].Columns[Prenom]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Prenom"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Prenom]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Inputs[Entrée de tri].Columns[Salaire]"
+                      cachedDataType="r8"
+                      cachedName="Salaire"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Salaire]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Inputs[Entrée de tri].Columns[Dte_Embauche]"
+                      cachedDataType="date"
+                      cachedName="Dte_Embauche"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Dte_Embauche]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Inputs[Entrée de tri].Columns[Departement]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Departement"
+                      lineageId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Departement]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri]"
+                  isSorted="true"
+                  name="Sortie de tri">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[ID]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[ID]"
+                      name="ID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Nom]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Nom]"
+                      name="Nom">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Nom]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Prenom]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Prenom]"
+                      name="Prenom">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Prenom]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Salaire]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Salaire]"
+                      name="Salaire">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Salaire]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Dte_Embauche]"
+                      dataType="date"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Dte_Embauche]"
+                      name="Dte_Embauche">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Dte_Embauche]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Departement]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri].Columns[Departement]"
+                      name="Departement">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de traçabilité de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel].Columns[Departement]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
               refId="Package\Tâche de flux de données.Paths[Sortie de colonne dérivée]"
-              endId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel]"
+              endId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri]"
               name="Sortie de colonne dérivée"
               startId="Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de jointure de fusion]"
+              endId="Package\Tâche de flux de données\Destination Excel.Inputs[Entrée de destination Excel]"
+              name="Sortie de jointure de fusion"
+              startId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion]" />
             <path
               refId="Package\Tâche de flux de données.Paths[Sortie de source Excel]"
               endId="Package\Tâche de flux de données\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
               name="Sortie de source Excel"
               startId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de source Excel1]"
+              endId="Package\Tâche de flux de données\Trier 2.Inputs[Entrée de tri]"
+              name="Sortie de source Excel"
+              startId="Package\Tâche de flux de données\Source Excel 1.Outputs[Sortie de source Excel]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de tri]"
+              endId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion]"
+              name="Sortie de tri"
+              startId="Package\Tâche de flux de données\Trier 2.Outputs[Sortie de tri]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de tri1]"
+              endId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion]"
+              name="Sortie de tri"
+              startId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -555,11 +1702,11 @@
     design-time-name="Package\Tâche de flux de données">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="159.2,41.6"
           Id="Package\Tâche de flux de données\Destination Excel"
-          TopLeft="534.999992027879,202.999996975064" />
+          TopLeft="717.539674956141,204.699343378803" />
         <NodeLayout
           Size="138.4,41.6"
           Id="Package\Tâche de flux de données\Source Excel"
@@ -567,33 +1714,99 @@
         <NodeLayout
           Size="154.4,41.6"
           Id="Package\Tâche de flux de données\Colonne dérivée"
-          TopLeft="641.999990433455,77.9999988377094" />
+          TopLeft="508.66665681629,48.2614367722731" />
         <EdgeLayout
           Id="Package\Tâche de flux de données.Paths[Sortie de source Excel]"
-          TopLeft="363.399996647239,63.7999993592501">
+          TopLeft="363.399996647239,66.4307180657616">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="278.599993786216,34.9999994784594"
+              EndConnector="145.266660169051,0"
               Start="0,0"
-              End="271.099993786216,34.9999994784594">
+              End="137.766660169051,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="135.299996893108,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="135.299996893108,0"
-                    Point2="139.299996893108,0"
-                    Point3="139.299996893108,4" />
+                    End="137.766660169051,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Tâche de flux de données\Source Excel 1"
+          TopLeft="125.396825663762,146.143790721572" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Tâche de flux de données\Jointure de fusion"
+          TopLeft="504.76190583641,209.189542320555" />
+        <NodeLayout
+          Size="109.6,41.6"
+          Id="Package\Tâche de flux de données\Trier 1"
+          TopLeft="419.047619939661,122.352941069223" />
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de colonne dérivée]"
+          TopLeft="585.86665681629,89.8614367722732">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-112.019036876629,32.4915042969503"
+              Start="0,0"
+              End="-112.019036876629,24.9915042969503">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="139.299996893108,30.9999994784594" />
+                    End="0,12.2457521484751" />
                   <mssgle:CubicBezierSegment
-                    Point1="139.299996893108,30.9999994784594"
-                    Point2="139.299996893108,34.9999994784594"
-                    Point3="143.299996893108,34.9999994784594" />
+                    Point1="0,12.2457521484751"
+                    Point2="0,16.2457521484751"
+                    Point3="-4,16.2457521484751" />
                   <mssgle:LineSegment
-                    End="271.099993786216,34.9999994784594" />
+                    End="-108.019036876629,16.2457521484751" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-108.019036876629,16.2457521484751"
+                    Point2="-112.019036876629,16.2457521484751"
+                    Point3="-112.019036876629,20.2457521484751" />
+                  <mssgle:LineSegment
+                    End="-112.019036876629,24.9915042969503" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="109.6,41.6"
+          Id="Package\Tâche de flux de données\Trier 2"
+          TopLeft="290.476191094538,189.725490051593" />
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de source Excel1]"
+          TopLeft="272.596825663762,166.943790721572">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.6793654307758,22.7816993300203"
+              Start="0,0"
+              End="72.6793654307758,15.2816993300203">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="68.6793654307758,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68.6793654307758,0"
+                    Point2="72.6793654307758,0"
+                    Point3="72.6793654307758,4" />
+                  <mssgle:LineSegment
+                    End="72.6793654307758,15.2816993300203" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -603,31 +1816,87 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Tâche de flux de données.Paths[Sortie de colonne dérivée]"
-          TopLeft="719.199990433455,119.599998837709">
+          Id="Package\Tâche de flux de données.Paths[Sortie de tri]"
+          TopLeft="400.076191094538,210.525490051593">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-104.599998405576,83.3999981373549"
+              EndConnector="104.685714741872,19.4640522689626"
               Start="0,0"
-              End="-104.599998405576,75.8999981373549">
+              End="97.1857147418721,19.4640522689626">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.6999990686774" />
+                    End="48.3428573709361,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,37.6999990686774"
-                    Point2="0,41.6999990686774"
-                    Point3="-4,41.6999990686774" />
+                    Point1="48.3428573709361,0"
+                    Point2="52.3428573709361,0"
+                    Point3="52.3428573709361,4" />
                   <mssgle:LineSegment
-                    End="-100.599998405576,41.6999990686774" />
+                    End="52.3428573709361,15.4640522689626" />
                   <mssgle:CubicBezierSegment
-                    Point1="-100.599998405576,41.6999990686774"
-                    Point2="-104.599998405576,41.6999990686774"
-                    Point3="-104.599998405576,45.6999990686774" />
+                    Point1="52.3428573709361,15.4640522689626"
+                    Point2="52.3428573709361,19.4640522689626"
+                    Point3="56.3428573709361,19.4640522689626" />
                   <mssgle:LineSegment
-                    End="-104.599998405576,75.8999981373549" />
+                    End="97.1857147418721,19.4640522689626" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de tri1]"
+          TopLeft="473.847619939661,163.952941069223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112.114285896749,45.2366012513318"
+              Start="0,0"
+              End="112.114285896749,37.7366012513318">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.6183006256659" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.6183006256659"
+                    Point2="0,22.6183006256659"
+                    Point3="4,22.6183006256659" />
+                  <mssgle:LineSegment
+                    End="108.114285896749,22.6183006256659" />
+                  <mssgle:CubicBezierSegment
+                    Point1="108.114285896749,22.6183006256659"
+                    Point2="112.114285896749,22.6183006256659"
+                    Point3="112.114285896749,26.6183006256659" />
+                  <mssgle:LineSegment
+                    End="112.114285896749,37.7366012513318" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de jointure de fusion]"
+          TopLeft="667.16190583641,227.744442849679">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50.3777691197306,0"
+              Start="0,0"
+              End="42.8777691197306,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.8777691197306,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -654,6 +1923,19 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Tâche de flux de données\Source Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tâche de flux de données\Source Excel 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
