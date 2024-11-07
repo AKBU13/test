@@ -11,8 +11,8 @@
   DTS:LocaleID="1036"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{A4C5D741-D6C6-4C2E-9FBB-729B58F9A226}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{85D2D350-821C-436E-BC8B-D15FF67B3599}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -69,6 +69,12 @@
                       cachedLength="255"
                       cachedName="Nom"
                       lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Nom]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Colonne dérivée.Inputs[Entrée de colonne dérivée].Columns[Departement]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Departement"
+                      lineageId="Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Departement]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -125,6 +131,29 @@
                           description="Expression claire de colonne dérivée"
                           expressionType="Notify"
                           name="FriendlyExpression">UPPER(Nom)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 3]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Derived Column 3]"
+                      name="Derived Column 3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[UPPER](#{Package\Tâche de flux de données\Source Excel.Outputs[Sortie de source Excel].Columns[Departement]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(Departement)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
